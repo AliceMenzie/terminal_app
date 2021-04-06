@@ -1,3 +1,4 @@
+require_relative 'feature_random.rb'
 
 class App 
 
@@ -19,9 +20,12 @@ class App
             display_history_menu
         when 2 
             #go to Random Civ 
-            display_randomise
+            display_randomize_home
+            display_randomize
             # rdm = RandomCiv.new
-            # puts rdm.select_random_civ
+            # puts rdm.select_random_civ  
+            # system('clear')
+            # puts random_civ
         when 3 
             # go to Civ Info
             display_card_menu
@@ -53,18 +57,26 @@ class App
 
     def menu_option 
         gets.to_i
-        system ('clear')
+        # system ('clear')
     end
 
-    def display_randomise
-
-        rdm = RandomCiv.new
-        puts rdm.select_random_civ
+    def display_randomize_home 
+        system('clear')   
+        puts "---------------------"
+        puts "CHALLENGE ACTIVATED"
+        puts "---------------------"
     
-    end 
+    
+    end
 
-   
+    def display_randomize
+        generate = Randomize.new 
+        puts " Your Challenge Civ is: #{generate.generate_random}"
+    
+     end 
 
+     
+  
     
 
 end 
