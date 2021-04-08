@@ -8,6 +8,7 @@ class App
 
     def initialize 
         @prompt = TTY::Prompt.new
+        @history = History.new
 
     end
 
@@ -35,7 +36,7 @@ class App
         when 1 
             #go to Match History
             display_history_home
-            history_landing
+            history_landing(@history)
             # display_history
             back_to_main
 
