@@ -14,21 +14,27 @@ class App
 
     def run 
         loop do
-        display_welcome
-        # a = Artii::Base.new :font => 'slant'
-        # puts a.asciify('Welcome to AoE Performance Tracker')
-        # display_menu
-        # select_menu_option
-        # process_menu(menu_option)
-        input = @prompt.select("Menu: ") do |menu|
-            menu.choice "Match History", 1
-            menu.choice "Random Civ Challenge", 2
-            menu.choice "Civ Info", 3 
-            menu.choice "Exit", 4
+           
+            display_welcome
+            # a = Artii::Base.new :font => 'slant'
+            # puts a.asciify('Welcome to AoE Performance Tracker')
+            # display_menu
+            # select_menu_option
+            # process_menu(menu_option)
+            input = @prompt.select("Menu: ") do |menu|
+                menu.choice "Match History", 1
+                menu.choice "Random Civ Challenge", 2
+                menu.choice "Civ Info", 3 
+                menu.choice "Exit", 4
+             end
+            # @prompt.select('Menu:', ['Match History','Random Civ Challenge', 'Civ Info', 'Exit' ])
+            
+            process_menu(input)
+            if input == 4
+            break
+             end 
+           
         end
-        # @prompt.select('Menu:', ['Match History','Random Civ Challenge', 'Civ Info', 'Exit' ])
-        process_menu(input)
-    end
     end
 
     def process_menu(menu_choice)
@@ -50,9 +56,10 @@ class App
         when 3 
             # go to Civ Info
             display_card_menu
-        when 4 
+        when  4 
             # exit the app
-            system('exit')
+            
+           
         end    
         
        
@@ -76,7 +83,7 @@ class App
         puts "Welcome to AoE Performance Tracker"
         puts "----------------------------------"
     end
-
+end 
 
     # def menu_option 
     #     gets.to_i
@@ -115,4 +122,3 @@ class App
     # def return_main_menu
     # end 
 
-end 
