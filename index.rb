@@ -1,5 +1,7 @@
 require_relative 'feature_random.rb'
 require_relative 'feature_history.rb'
+require_relative 'feature_card.rb'
+
 require 'tty-prompt'
 # require 'artii'
 # require_relative 'feature_history.rb'
@@ -31,6 +33,7 @@ class App
             
             process_menu(input)
             if input == 4
+                system ('clear')
             break
              end 
            
@@ -55,7 +58,8 @@ class App
             
         when 3 
             # go to Civ Info
-            display_card_menu
+            display_info_home
+            back_to_main
         when  4 
             # exit the app
             
