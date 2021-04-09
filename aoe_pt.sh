@@ -1,2 +1,2 @@
 # !/bin/bash 
-ruby run.rb 
+ruby run.rb $1
