@@ -1,7 +1,6 @@
 require_relative 'feature_random.rb'
 require_relative 'feature_history.rb'
 require_relative 'feature_card.rb'
-
 require 'tty-prompt'
 # require 'artii'
 # require_relative 'feature_history.rb'
@@ -58,7 +57,8 @@ class App
             
         when 3 
             # go to Civ Info
-            display_info_home
+            display_info_home 
+            civ_info_landing 
             back_to_main
         when  4 
             # exit the app

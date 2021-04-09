@@ -12,8 +12,8 @@ class History
         
     end 
 
-    def run_history 
-    end
+    # def run_history 
+    # end
 
     def get_civ
         puts "What Civ did you play?"
@@ -43,6 +43,7 @@ class History
    
 end 
 
+##############--------------END OF CLASS -----------------------
 
     # puts "#{new_history}"
     # new_history.add_history
@@ -67,7 +68,7 @@ end
             end
             process_landing(input,history)
         end
-        
+
 
         def process_landing(user_choice, history)
             case user_choice  
@@ -96,7 +97,7 @@ end
     def back_to_main
         choice = @prompt.select(" ") do |menu|
             menu.choice "Main", 1 
-            # menu.choice "Exit", 2
+            menu.choice "Exit", 4
         end
         system('clear')
     end    
