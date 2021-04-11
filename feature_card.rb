@@ -56,24 +56,29 @@ def civ_info_landing
 end 
 
 def process_civ_landing(user_choice)
+    puts "This might take a minute ...retrieving data..."
+        api_class = Api_Info.new 
+        returned_results = api_class.access
+        if returned_results.nil?
+            puts "An Error has occured, return to menu"
+            return
+        end 
     case user_choice
     when 1 
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(0, "name")
-        army = api_class.access(0, "army_type")
+        name = returned_results[0]["name"]
+        army = returned_results[0]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(0, "unique_unit")
+        unit = returned_results[0]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(0, "unique_tech")
+        tech = returned_results[0]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        tm_bonus = api_class.access(0, "team_bonus")
-        civ_bonus = api_class.access(0, "civilization_bonus") 
+        tm_bonus = returned_results[0]["team_bonus"]
+        civ_bonus = returned_results[0]["civilization_bonus"] 
         civ_bonus[0]
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
@@ -81,25 +86,28 @@ def process_civ_landing(user_choice)
         system('clear')
         puts table.render(:ascii)
     when 2
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(1, "name")
-        army = api_class.access(1, "army_type")
+         
+        returned_results = api_class.access
+        if returned_results.nil?
+            return
+        end 
+        name = returned_results[1]["name"]
+        army = returned_results[1]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(1, "unique_unit")
+        unit = returned_results[1]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
             
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(1, "unique_tech")
+        tech = returned_results[1]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         
         # --------
-        tm_bonus = api_class.access(1, "team_bonus")
-        civ_bonus = api_class.access(1, "civilization_bonus") 
+        tm_bonus = returned_results[1]["team_bonus"]
+        civ_bonus = returned_results[1]["civilization_bonus"] 
         civ_bonus[0]
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
@@ -107,702 +115,590 @@ def process_civ_landing(user_choice)
         system('clear')
         puts table.render(:ascii)  
     when 3
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(2, "name")
-        army = api_class.access(2, "army_type")
+         
+        name = returned_results[2]["name"]
+        army = returned_results[2]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(2, "unique_unit")
+        unit = returned_results[2]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(2, "unique_tech")
+        tech = returned_results[2]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(2, "team_bonus")
-        civ_bonus = api_class.access(2, "civilization_bonus") 
+        tm_bonus = returned_results[2]["team_bonus"]
+        civ_bonus = returned_results[2]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[1]]])
         system('clear')
         puts table.render(:ascii)  
     when 4  
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(3, "name")
-        army = api_class.access(3, "army_type")
+         
+        name = returned_results[3]["name"]
+        army = returned_results[3]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(3, "unique_unit")
+        unit = returned_results[3]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(3, "unique_tech")
+        tech = returned_results[3]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(3, "team_bonus")
-        civ_bonus = api_class.access(3, "civilization_bonus") 
+        tm_bonus = returned_results[3]["team_bonus"]
+        civ_bonus = returned_results[3]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)  
     when 5
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(4, "name")
-        army = api_class.access(4, "army_type")
+         
+        name = returned_results[4]["name"]
+        army = returned_results[4]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(5, "unique_unit")
+        unit = returned_results[5]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(5, "unique_tech")
+        tech = returned_results[5]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(5, "team_bonus")
-        civ_bonus = api_class.access(5, "civilization_bonus") 
+        tm_bonus = returned_results[5]["team_bonus"]
+        civ_bonus = returned_results[5]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)  
     when 6 
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(5, "name")
-        army = api_class.access(5, "army_type")
+         
+        name = returned_results[5]["name"]
+        army = returned_results[5]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(5, "unique_unit")
+        unit = returned_results[5]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(5, "unique_tech")
+        tech = returned_results[5]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(5, "team_bonus")
-        civ_bonus = api_class.access(5, "civilization_bonus") 
+        tm_bonus = returned_results[5]["team_bonus"]
+        civ_bonus = returned_results[5]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii) 
     when 7
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(6, "name")
-        army = api_class.access(6, "army_type")
+         
+        name = returned_results[6]["name"]
+        army = returned_results[6]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(1, "unique_unit")
+        unit = returned_results[1]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(1, "unique_tech")
+        tech = returned_results[1]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(6, "team_bonus")
-        civ_bonus = api_class.access(6, "civilization_bonus") 
+        tm_bonus = returned_results[6]["team_bonus"]
+        civ_bonus = returned_results[6]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)  
     when 8
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(7, "name")
-        army = api_class.access(7, "army_type")
+         
+        name = returned_results[7]["name"]
+        army = returned_results[7]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(7, "unique_unit")
+        unit = returned_results[7]["unique_unit"]
         string = unit[1].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(7, "unique_tech")
+        tech = returned_results[7]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(7, "team_bonus")
-        civ_bonus = api_class.access(7, "civilization_bonus") 
+        tm_bonus = returned_results[7]["team_bonus"]
+        civ_bonus = returned_results[7]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)  
     when 9 
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(8, "name")
-        army = api_class.access(8, "army_type")
+         
+        name = returned_results[8]["name"]
+        army = returned_results[8]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(8, "unique_unit")
+        unit = returned_results[8]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(8, "unique_tech")
+        tech = returned_results[8]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(8, "team_bonus")
-        civ_bonus = api_class.access(8, "civilization_bonus") 
+        tm_bonus = returned_results[8]["team_bonus"]
+        civ_bonus = returned_results[8]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii) 
     when 10
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(9, "name")
-        army = api_class.access(9, "army_type")
+         
+        name = returned_results[9]["name"]
+        army = returned_results[9]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(9, "unique_unit")
+        unit = returned_results[9]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(9, "unique_tech")
+        tech = returned_results[9]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(9, "team_bonus")
-        civ_bonus = api_class.access(9, "civilization_bonus") 
+        tm_bonus = returned_results[9]["team_bonus"]
+        civ_bonus = returned_results[9]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)  
     when 11
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(10, "name")
-        army = api_class.access(10, "army_type")
+         
+        name = returned_results[10]["name"]
+        army = returned_results[10]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(10, "unique_unit")
+        unit = returned_results[10]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(10, "unique_tech")
+        tech = returned_results[10]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(10, "team_bonus")
-        civ_bonus = api_class.access(10, "civilization_bonus") 
+        tm_bonus = returned_results[10]["team_bonus"]
+        civ_bonus = returned_results[10]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii) 
     when 12
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(11, "name")
-        army = api_class.access(11, "army_type")
+         
+        name = returned_results[11]["name"]
+        army = returned_results[11]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(11, "unique_unit")
+        unit = returned_results[11]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(11, "unique_tech")
+        tech = returned_results[11]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(11, "team_bonus")
-        civ_bonus = api_class.access(11, "civilization_bonus") 
+        tm_bonus = returned_results[11]["team_bonus"]
+        civ_bonus = returned_results[11]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii) 
     when 13 
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(12, "name")
-        army = api_class.access(12, "army_type")
+         
+        name = returned_results[12]["name"]
+        army = returned_results[12]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(12, "unique_unit")
+        unit = returned_results[12]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(12, "unique_tech")
+        tech = returned_results[12]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(12, "team_bonus")
-        civ_bonus = api_class.access(12, "civilization_bonus") 
+        tm_bonus = returned_results[12]["team_bonus"]
+        civ_bonus = returned_results[12]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii) 
     when 14
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(13, "name")
-        army = api_class.access(13, "army_type")
+         
+        name = returned_results[13]["name"]
+        army = returned_results[13]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(13, "unique_unit")
+        unit = returned_results[13]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(13, "unique_tech")
+        tech = returned_results[13]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(13, "team_bonus")
-        civ_bonus = api_class.access(13, "civilization_bonus") 
+        tm_bonus = returned_results[13]["team_bonus"]
+        civ_bonus = returned_results[13]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)  
     when 15
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(14, "name")
-        army = api_class.access(14, "army_type")
+         
+        name = returned_results[14]["name"]
+        army = returned_results[14]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(14, "unique_unit")
+        unit = returned_results[14]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(14, "unique_tech")
+        tech = returned_results[14]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(14, "team_bonus")
-        civ_bonus = api_class.access(14, "civilization_bonus") 
+        tm_bonus = returned_results[14]["team_bonus"]
+        civ_bonus = returned_results[14]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)  
     when 16
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(15, "name")
-        army = api_class.access(15, "army_type")
+         
+        name = returned_results[15]["name"]
+        army = returned_results[15]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(15, "unique_unit")
+        unit = returned_results[15]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(15, "unique_tech")
+        tech = returned_results[15]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(15, "team_bonus")
-        civ_bonus = api_class.access(15, "civilization_bonus") 
+        tm_bonus = returned_results[15]["team_bonus"]
+        civ_bonus = returned_results[15]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)  
     when 17
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(16, "name")
-        army = api_class.access(16, "army_type")
+         
+        name = returned_results[16]["name"]
+        army = returned_results[16]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(16, "unique_unit")
+        unit = returned_results[16]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(16, "unique_tech")
+        tech = returned_results[16]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(16, "team_bonus")
-        civ_bonus = api_class.access(16, "civilization_bonus") 
+        tm_bonus = returned_results[16]["team_bonus"]
+        civ_bonus = returned_results[16]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)  
     when 18 
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(17, "name")
-        army = api_class.access(17, "army_type")
+         
+        name = returned_results[17]["name"]
+        army = returned_results[17]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(17, "unique_unit")
+        unit = returned_results[17]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(17, "unique_tech")
+        tech = returned_results[17]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(17, "team_bonus")
-        civ_bonus = api_class.access(17, "civilization_bonus") 
+        tm_bonus = returned_results[17]["team_bonus"]
+        civ_bonus = returned_results[17]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii) 
     when 19
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(18, "name")
-        army = api_class.access(18, "army_type")
+         
+        name = returned_results[18]["name"]
+        army = returned_results[18]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        # unit = api_class.access(18, "unique_unit")
-        # string = unit[0].to_s
-        # response2 = HTTParty.get(string)
-        # uu = response2.parsed_response["name"]
-        uu = 't'
+        uu = 'Genitour'
         #------------------------------------------------------------ API ACCESS Nested  
-        # tech = api_class.access(18, "unique_tech")
-        # string = tech[0].to_s
-        # response2 = HTTParty.get(string)
-        # ut = response2.parsed_response["name"]
-        ut = 't'
+        ut = 'Maghrabi Camels'
         # --------
-        tm_bonus = api_class.access(18, "team_bonus")
-        civ_bonus = api_class.access(18, "civilization_bonus") 
+        tm_bonus = returned_results[18]["team_bonus"]
+        civ_bonus = returned_results[18]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii) 
     when 20 
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(19, "name")
-        army = api_class.access(19, "army_type")
+        name = returned_results[19]["name"]
+        army = returned_results[19]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        # unit = api_class.access(19, "unique_unit")
-        # string = unit[0].to_s
-        # response2 = HTTParty.get(string)
-        # uu = response2.parsed_response["name"]
-        uu = 't'
+        uu = 'Arambai'
         #------------------------------------------------------------ API ACCESS Nested  
-        # tech = api_class.access(19, "unique_tech")
-        # string = tech[0].to_s
-        # response2 = HTTParty.get(string)
-        # ut = response2.parsed_response["name"]
-        ut = 't'
+        ut = 'Manipur Cavalry'
         # --------
-        tm_bonus = api_class.access(19, "team_bonus")
-        civ_bonus = api_class.access(19, "civilization_bonus") 
+        tm_bonus = returned_results[19]["team_bonus"]
+        civ_bonus = returned_results[19]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)
     when 21
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(20, "name")
-        army = api_class.access(20, "army_type")
+         
+        name = returned_results[20]["name"]
+        army = returned_results[20]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        # unit = api_class.access(20, "unique_unit")
-        # string = unit[0].to_s
-        # response2 = HTTParty.get(string)
-        # uu = response2.parsed_response["name"]
-        uu = 't'
+        uu = 'Shotel Warrior'
         #------------------------------------------------------------ API ACCESS Nested  
-        # tech = api_class.access(20, "unique_tech")
-        # string = tech[0].to_s
-        # response2 = HTTParty.get(string)
-        # ut = response2.parsed_response["name"]
-        ut = 't'
+        ut = 'Torsion Engines'
         # --------
-        tm_bonus = api_class.access(20, "team_bonus")
-        civ_bonus = api_class.access(20, "civilization_bonus") 
+        tm_bonus = returned_results[20]["team_bonus"]
+        civ_bonus = returned_results[20]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army, uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii) 
     when 22 
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(21, "name")
-        army = api_class.access(21, "army_type")
+         
+        name = returned_results[21]["name"]
+        army = returned_results[21]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(21, "unique_unit")
+        unit = returned_results[21]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(21, "unique_tech")
+        tech = returned_results[21]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(21, "team_bonus")
-        civ_bonus = api_class.access(21, "civilization_bonus") 
+        tm_bonus = returned_results[21]["team_bonus"]
+        civ_bonus = returned_results[21]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army, uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii) 
     when 23
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(22, "name")
-        army = api_class.access(22, "army_type")
+         
+        name = returned_results[22]["name"]
+        army = returned_results[22]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        # unit = api_class.access(22, "unique_unit")
-        # string = unit[0].to_s
-        # response2 = HTTParty.get(string)
-        # uu = response2.parsed_response["name"]
+         uu = 'Kamayuk'
         # #------------------------------------------------------------ API ACCESS Nested  
-        # tech = api_class.access(22, "unique_tech")
-        # string = tech[0].to_s
-        # response2 = HTTParty.get(string)
-        # ut = response2.parsed_response["name"]
+        
+        ut = 'Fabric Shields'
         # --------
-        tm_bonus = api_class.access(22, "team_bonus")
-        civ_bonus = api_class.access(22, "civilization_bonus") 
+        tm_bonus = returned_results[22]["team_bonus"]
+        civ_bonus = returned_results[22]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)  
     when 24 
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(23, "name")
-        army = api_class.access(23, "army_type")
+         
+        name = returned_results[23]["name"]
+        army = returned_results[23]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        # unit = api_class.access(23, "unique_unit")
-        # string = unit[0].to_s
-        # response2 = HTTParty.get(string)
-        # uu = response2.parsed_response["name"]
+       uu = ' Imperial Camel Rider'
         # #------------------------------------------------------------ API ACCESS Nested  
-        # tech = api_class.access(23, "unique_tech")
-        # string = tech[0].to_s
-        # response2 = HTTParty.get(string)
-        # ut = response2.parsed_response["name"]
+        
+        ut = 'Shatagni'
         # --------
-        tm_bonus = api_class.access(23, "team_bonus")
-        civ_bonus = api_class.access(23, "civilization_bonus") 
+        tm_bonus = returned_results[23]["team_bonus"]
+        civ_bonus = returned_results[23]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[1]]])
         system('clear')
         puts table.render(:ascii)
     when 25
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(24, "name")
-        army = api_class.access(24, "army_type")
+        name = returned_results[24]["name"]
+        army = returned_results[24]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        # unit = api_class.access(24, "unique_unit")
-        # string = unit[0].to_s
-        # response2 = HTTParty.get(string)
-        # uu = response2.parsed_response["name"]
+       uu = 'Condottiero'
         # #------------------------------------------------------------ API ACCESS Nested  
-        # tech = api_class.access(24, "unique_tech")
-        # string = tech[0].to_s
-        # response2 = HTTParty.get(string)
-        # ut = response2.parsed_response["name"]
+        ut = 'Silk Road'
         # --------
-        tm_bonus = api_class.access(24, "team_bonus")
-        civ_bonus = api_class.access(24, "civilization_bonus") 
+        tm_bonus = returned_results[24]["team_bonus"]
+        civ_bonus = returned_results[24]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii) 
     when 26
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(25, "name")
-        army = api_class.access(25, "army_type")
+         
+        name = returned_results[25]["name"]
+        army = returned_results[25]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        unit = api_class.access(25, "unique_unit")
+        unit = returned_results[25]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
         #------------------------------------------------------------ API ACCESS Nested  
-        tech = api_class.access(25, "unique_tech")
+        tech = returned_results[25]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         # --------
-        tm_bonus = api_class.access(25, "team_bonus")
-        civ_bonus = api_class.access(25, "civilization_bonus") 
+        tm_bonus = returned_results[25]["team_bonus"]
+        civ_bonus = returned_results[25]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)  
     when 27 
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(26, "name")
-        army = api_class.access(26, "army_type")
+         
+        name = returned_results[26]["name"]
+        army = returned_results[26]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        # unit = api_class.access(26, "unique_unit")
-        # string = unit[0].to_s
-        # response2 = HTTParty.get(string)
-        # uu = response2.parsed_response["name"]
-        uu = 't'
+        uu = 'Ballista Elephant'
         #------------------------------------------------------------ API ACCESS Nested  
-        # tech = api_class.access(26, "unique_tech")
-        # string = tech[0].to_s
-        # response2 = HTTParty.get(string)
-        # ut = response2.parsed_response["name"]
-        ut = 't'
+        ut = 'Tusk Swords'
         # --------
-        tm_bonus = api_class.access(26, "team_bonus")
-        civ_bonus = api_class.access(26, "civilization_bonus") 
+        tm_bonus = returned_results[26]["team_bonus"]
+        civ_bonus = returned_results[26]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[1]]])
         system('clear')
         puts table.render(:ascii) 
     when 28
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(27, "name")
-        army = api_class.access(27, "army_type")
+         
+        name = returned_results[27]["name"]
+        army = returned_results[27]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        # unit = api_class.access(27, "unique_unit")
-        # string = unit[0].to_s
-        # response2 = HTTParty.get(string)
-        # uu = response2.parsed_response["name"]
-        uu = 't'
+        uu = 'Magyar Huszar'
         #------------------------------------------------------------ API ACCESS Nested  
-        # tech = api_class.access(27, "unique_tech")
-        # string = tech[0].to_s
-        # response2 = HTTParty.get(string)
-        # ut = response2.parsed_response["name"]
-        ut = 't'
+        
+        ut = 'Corvinian Army'
         # --------
-        tm_bonus = api_class.access(27, "team_bonus")
-        civ_bonus = api_class.access(27, "civilization_bonus") 
+        tm_bonus = returned_results[27]["team_bonus"]
+        civ_bonus = returned_results[27]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)  
     when 29
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(28, "name")
-        army = api_class.access(28, "army_type")
+         
+        name = returned_results[28]["name"]
+        army = returned_results[28]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        # unit = api_class.access(28, "unique_unit")
-        # string = unit[0].to_s
-        # response2 = HTTParty.get(string)
-        # uu = response2.parsed_response["name"]
-        uu = 't'
+        uu = 'Gbeto'
         #------------------------------------------------------------ API ACCESS Nested  
-        # tech = api_class.access(28, "unique_tech")
-        # string = tech[0].to_s
-        # response2 = HTTParty.get(string)
-        # ut = response2.parsed_response["name"]
-        ut = 't'
+        ut = 'Tigui'
         # --------
-        tm_bonus = api_class.access(28, "team_bonus")
-        civ_bonus = api_class.access(28, "civilization_bonus") 
+        tm_bonus = returned_results[28]["team_bonus"]
+        civ_bonus = returned_results[28]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)  
     when 30
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(29, "name")
-        army = api_class.access(29, "army_type")
+         
+        name = returned_results[29]["name"]
+        army = returned_results[29]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        # unit = api_class.access(29, "unique_unit")
-        # string = unit[0].to_s
-        # response2 = HTTParty.get(string)
-        # uu = response2.parsed_response["name"]
+         uu = 'Caravel'
         # #------------------------------------------------------------ API ACCESS Nested  
-        # tech = api_class.access(29, "unique_tech")
-        # string = tech[0].to_s
-        # response2 = HTTParty.get(string)
-        # ut = response2.parsed_response["name"]
+         ut = 'Carrack'
         # --------
-        tm_bonus = api_class.access(29, "team_bonus")
-        civ_bonus = api_class.access(29, "civilization_bonus") 
+        tm_bonus = returned_results[29]["team_bonus"]
+        civ_bonus = returned_results[29]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)  
     when 31
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(30, "name")
-        army = api_class.access(30, "army_type")
+         
+        name = returned_results[30]["name"]
+        army = returned_results[30]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        # unit = api_class.access(30, "unique_unit")
-        # string = unit[0].to_s
-        # response2 = HTTParty.get(string)
-        # uu = response2.parsed_response["name"]
+         uu = 'Boyar'
         # #------------------------------------------------------------ API ACCESS Nested  
-        # tech = api_class.access(30, "unique_tech")
-        # string = tech[0].to_s
-        # response2 = HTTParty.get(string)
-        # ut = response2.parsed_response["name"]
+        
+         ut = 'Orthodoxy'
         # --------
-        tm_bonus = api_class.access(30, "team_bonus")
-        civ_bonus = api_class.access(30, "civilization_bonus") 
+        tm_bonus = returned_results[30]["team_bonus"]
+        civ_bonus = returned_results[30]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)
     when 32
-        puts "This might take a minute ...retrieving data..."
-        api_class = Api_Info.new 
-        name = api_class.access(31, "name")
-        army = api_class.access(31, "army_type")
+        name = returned_results[31]["name"]
+        army = returned_results[31]["army_type"]
         #------------------------------------------------------------ API ACCESS Nested 
-        # unit = api_class.access(31, "unique_unit")
-        # string = unit[0].to_s
-        # response2 = HTTParty.get(string)
-        # uu = response2.parsed_response["name"]
+        
+         uu = 'Rattan Archer'
         # #------------------------------------------------------------ API ACCESS Nested  
-        # tech = api_class.access(31, "unique_tech")
-        # string = tech[0].to_s
-        # response2 = HTTParty.get(string)
-        # ut = response2.parsed_response["name"]
+         ut = 'Chatras'
         # --------
-        tm_bonus = api_class.access(31, "team_bonus")
-        civ_bonus = api_class.access(31, "civilization_bonus") 
+        tm_bonus = returned_results[31]["team_bonus"]
+        civ_bonus = returned_results[31]["civilization_bonus"] 
         #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
