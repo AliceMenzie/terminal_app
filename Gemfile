@@ -8,8 +8,8 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem "tty-prompt", "~> 0.23.0"
 
-gem 'artii', '~> 2.1', '>= 2.1.2'
-gem "rspec", "~> 3.10"
+
+
 
 gem "httparty", "~> 0.18.1"
 
