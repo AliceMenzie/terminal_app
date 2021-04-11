@@ -3,10 +3,6 @@ require_relative 'index.rb'
 require_relative 'aoe_civ_info.rb'
 require 'tty-prompt'
 require 'tty-table'
-# class Civ_Card
-
-# end 
-
 
 def display_info_home 
     system('clear') 
@@ -67,12 +63,12 @@ def process_civ_landing(user_choice)
     when 1 
         name = returned_results[0]["name"]
         army = returned_results[0]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[0]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[0]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
@@ -80,7 +76,7 @@ def process_civ_landing(user_choice)
         tm_bonus = returned_results[0]["team_bonus"]
         civ_bonus = returned_results[0]["civilization_bonus"] 
         civ_bonus[0]
-        #---------------table
+        
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
         [[name, army, uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -93,45 +89,45 @@ def process_civ_landing(user_choice)
         end 
         name = returned_results[1]["name"]
         army = returned_results[1]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[1]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
             
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[1]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
         
-        # --------
+      
         tm_bonus = returned_results[1]["team_bonus"]
         civ_bonus = returned_results[1]["civilization_bonus"] 
         civ_bonus[0]
-        #---------------table
+       
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
-       [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
+       [[name, army, uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)  
     when 3
          
         name = returned_results[2]["name"]
         army = returned_results[2]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[2]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[2]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+       
         tm_bonus = returned_results[2]["team_bonus"]
         civ_bonus = returned_results[2]["civilization_bonus"] 
-        #---------------table
+       
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[1]]])
         system('clear')
@@ -140,20 +136,20 @@ def process_civ_landing(user_choice)
          
         name = returned_results[3]["name"]
         army = returned_results[3]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[3]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[3]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+      
         tm_bonus = returned_results[3]["team_bonus"]
         civ_bonus = returned_results[3]["civilization_bonus"] 
-        #---------------table
+        
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -162,20 +158,20 @@ def process_civ_landing(user_choice)
          
         name = returned_results[4]["name"]
         army = returned_results[4]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[5]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[5]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+       
         tm_bonus = returned_results[5]["team_bonus"]
         civ_bonus = returned_results[5]["civilization_bonus"] 
-        #---------------table
+       
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -184,20 +180,20 @@ def process_civ_landing(user_choice)
          
         name = returned_results[5]["name"]
         army = returned_results[5]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[5]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[5]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+       
         tm_bonus = returned_results[5]["team_bonus"]
         civ_bonus = returned_results[5]["civilization_bonus"] 
-        #---------------table
+        
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -206,20 +202,20 @@ def process_civ_landing(user_choice)
          
         name = returned_results[6]["name"]
         army = returned_results[6]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[1]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[1]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+        
         tm_bonus = returned_results[6]["team_bonus"]
         civ_bonus = returned_results[6]["civilization_bonus"] 
-        #---------------table
+        
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -228,20 +224,20 @@ def process_civ_landing(user_choice)
          
         name = returned_results[7]["name"]
         army = returned_results[7]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[7]["unique_unit"]
         string = unit[1].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[7]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+        
         tm_bonus = returned_results[7]["team_bonus"]
         civ_bonus = returned_results[7]["civilization_bonus"] 
-        #---------------table
+        
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -250,20 +246,20 @@ def process_civ_landing(user_choice)
          
         name = returned_results[8]["name"]
         army = returned_results[8]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[8]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[8]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+        
         tm_bonus = returned_results[8]["team_bonus"]
         civ_bonus = returned_results[8]["civilization_bonus"] 
-        #---------------table
+        
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -272,20 +268,20 @@ def process_civ_landing(user_choice)
          
         name = returned_results[9]["name"]
         army = returned_results[9]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[9]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[9]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+        
         tm_bonus = returned_results[9]["team_bonus"]
         civ_bonus = returned_results[9]["civilization_bonus"] 
-        #---------------table
+        
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -294,20 +290,20 @@ def process_civ_landing(user_choice)
          
         name = returned_results[10]["name"]
         army = returned_results[10]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[10]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[10]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+      
         tm_bonus = returned_results[10]["team_bonus"]
         civ_bonus = returned_results[10]["civilization_bonus"] 
-        #---------------table
+      
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -316,20 +312,20 @@ def process_civ_landing(user_choice)
          
         name = returned_results[11]["name"]
         army = returned_results[11]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[11]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[11]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+       
         tm_bonus = returned_results[11]["team_bonus"]
         civ_bonus = returned_results[11]["civilization_bonus"] 
-        #---------------table
+        
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -338,20 +334,20 @@ def process_civ_landing(user_choice)
          
         name = returned_results[12]["name"]
         army = returned_results[12]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[12]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[12]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+       
         tm_bonus = returned_results[12]["team_bonus"]
         civ_bonus = returned_results[12]["civilization_bonus"] 
-        #---------------table
+       
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -360,20 +356,20 @@ def process_civ_landing(user_choice)
          
         name = returned_results[13]["name"]
         army = returned_results[13]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[13]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[13]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+       
         tm_bonus = returned_results[13]["team_bonus"]
         civ_bonus = returned_results[13]["civilization_bonus"] 
-        #---------------table
+     
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -382,20 +378,20 @@ def process_civ_landing(user_choice)
          
         name = returned_results[14]["name"]
         army = returned_results[14]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[14]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[14]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+       
         tm_bonus = returned_results[14]["team_bonus"]
         civ_bonus = returned_results[14]["civilization_bonus"] 
-        #---------------table
+        
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -404,20 +400,20 @@ def process_civ_landing(user_choice)
          
         name = returned_results[15]["name"]
         army = returned_results[15]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[15]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[15]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+        
         tm_bonus = returned_results[15]["team_bonus"]
         civ_bonus = returned_results[15]["civilization_bonus"] 
-        #---------------table
+        
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -426,20 +422,20 @@ def process_civ_landing(user_choice)
          
         name = returned_results[16]["name"]
         army = returned_results[16]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[16]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[16]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+       
         tm_bonus = returned_results[16]["team_bonus"]
         civ_bonus = returned_results[16]["civilization_bonus"] 
-        #---------------table
+       
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -448,20 +444,20 @@ def process_civ_landing(user_choice)
          
         name = returned_results[17]["name"]
         army = returned_results[17]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[17]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[17]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+        
         tm_bonus = returned_results[17]["team_bonus"]
         civ_bonus = returned_results[17]["civilization_bonus"] 
-        #---------------table
+        
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -470,14 +466,14 @@ def process_civ_landing(user_choice)
          
         name = returned_results[18]["name"]
         army = returned_results[18]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        # API did not include, information manually required
         uu = 'Genitour'
-        #------------------------------------------------------------ API ACCESS Nested  
+         # API did not include, information manually required
         ut = 'Maghrabi Camels'
-        # --------
+        
         tm_bonus = returned_results[18]["team_bonus"]
         civ_bonus = returned_results[18]["civilization_bonus"] 
-        #---------------table
+        
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -485,14 +481,14 @@ def process_civ_landing(user_choice)
     when 20 
         name = returned_results[19]["name"]
         army = returned_results[19]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        # API did not include, information manually required
         uu = 'Arambai'
-        #------------------------------------------------------------ API ACCESS Nested  
+         # API did not include, information manually required
         ut = 'Manipur Cavalry'
-        # --------
+      
         tm_bonus = returned_results[19]["team_bonus"]
         civ_bonus = returned_results[19]["civilization_bonus"] 
-        #---------------table
+       
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -501,14 +497,14 @@ def process_civ_landing(user_choice)
          
         name = returned_results[20]["name"]
         army = returned_results[20]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        # API did not include, information manually required
         uu = 'Shotel Warrior'
-        #------------------------------------------------------------ API ACCESS Nested  
+         # API did not include, information manually required
         ut = 'Torsion Engines'
-        # --------
+        
         tm_bonus = returned_results[20]["team_bonus"]
         civ_bonus = returned_results[20]["civilization_bonus"] 
-        #---------------table
+        
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army, uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -517,20 +513,20 @@ def process_civ_landing(user_choice)
          
         name = returned_results[21]["name"]
         army = returned_results[21]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[21]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[21]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+        
         tm_bonus = returned_results[21]["team_bonus"]
         civ_bonus = returned_results[21]["civilization_bonus"] 
-        #---------------table
+        
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army, uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -539,10 +535,10 @@ def process_civ_landing(user_choice)
          
         name = returned_results[22]["name"]
         army = returned_results[22]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        # API did not include, information manually required
          uu = 'Kamayuk'
-        # #------------------------------------------------------------ API ACCESS Nested  
         
+        # API did not include, information manually required
         ut = 'Fabric Shields'
         # --------
         tm_bonus = returned_results[22]["team_bonus"]
@@ -556,15 +552,15 @@ def process_civ_landing(user_choice)
          
         name = returned_results[23]["name"]
         army = returned_results[23]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        # API did not include, information manually required
        uu = ' Imperial Camel Rider'
-        # #------------------------------------------------------------ API ACCESS Nested  
-        
+         
+        # API did not include, information manually required
         ut = 'Shatagni'
-        # --------
+        
         tm_bonus = returned_results[23]["team_bonus"]
         civ_bonus = returned_results[23]["civilization_bonus"] 
-        #---------------table
+        
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[1]]])
         system('clear')
@@ -572,14 +568,14 @@ def process_civ_landing(user_choice)
     when 25
         name = returned_results[24]["name"]
         army = returned_results[24]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        # API did not include, information manually required
        uu = 'Condottiero'
-        # #------------------------------------------------------------ API ACCESS Nested  
+        # API did not include, information manually required  
         ut = 'Silk Road'
-        # --------
+       
         tm_bonus = returned_results[24]["team_bonus"]
         civ_bonus = returned_results[24]["civilization_bonus"] 
-        #---------------table
+        
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -588,20 +584,20 @@ def process_civ_landing(user_choice)
          
         name = returned_results[25]["name"]
         army = returned_results[25]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        
         unit = returned_results[25]["unique_unit"]
         string = unit[0].to_s
         response2 = HTTParty.get(string)
         uu = response2.parsed_response["name"]
-        #------------------------------------------------------------ API ACCESS Nested  
+         
         tech = returned_results[25]["unique_tech"]
         string = tech[0].to_s
         response2 = HTTParty.get(string)
         ut = response2.parsed_response["name"]
-        # --------
+        
         tm_bonus = returned_results[25]["team_bonus"]
         civ_bonus = returned_results[25]["civilization_bonus"] 
-        #---------------table
+      
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -610,14 +606,14 @@ def process_civ_landing(user_choice)
          
         name = returned_results[26]["name"]
         army = returned_results[26]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        # API did not include, information manually required
         uu = 'Ballista Elephant'
-        #------------------------------------------------------------ API ACCESS Nested  
+         # API did not include, information manually required
         ut = 'Tusk Swords'
-        # --------
+       
         tm_bonus = returned_results[26]["team_bonus"]
         civ_bonus = returned_results[26]["civilization_bonus"] 
-        #---------------table
+       
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[1]]])
         system('clear')
@@ -626,15 +622,14 @@ def process_civ_landing(user_choice)
          
         name = returned_results[27]["name"]
         army = returned_results[27]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        # API did not include, information manually required
         uu = 'Magyar Huszar'
-        #------------------------------------------------------------ API ACCESS Nested  
-        
+         # API did not include, information manually required
         ut = 'Corvinian Army'
-        # --------
+        
         tm_bonus = returned_results[27]["team_bonus"]
         civ_bonus = returned_results[27]["civilization_bonus"] 
-        #---------------table
+      
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -643,14 +638,14 @@ def process_civ_landing(user_choice)
          
         name = returned_results[28]["name"]
         army = returned_results[28]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        # API did not include, information manually required
         uu = 'Gbeto'
-        #------------------------------------------------------------ API ACCESS Nested  
+         # API did not include, information manually required
         ut = 'Tigui'
-        # --------
+     
         tm_bonus = returned_results[28]["team_bonus"]
         civ_bonus = returned_results[28]["civilization_bonus"] 
-        #---------------table
+       
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -659,14 +654,14 @@ def process_civ_landing(user_choice)
          
         name = returned_results[29]["name"]
         army = returned_results[29]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        # API did not include, information manually required
          uu = 'Caravel'
-        # #------------------------------------------------------------ API ACCESS Nested  
+        # API did not include, information manually required
          ut = 'Carrack'
-        # --------
+        
         tm_bonus = returned_results[29]["team_bonus"]
         civ_bonus = returned_results[29]["civilization_bonus"] 
-        #---------------table
+        
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -675,15 +670,14 @@ def process_civ_landing(user_choice)
          
         name = returned_results[30]["name"]
         army = returned_results[30]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
+        # API did not include, information manually required
          uu = 'Boyar'
-        # #------------------------------------------------------------ API ACCESS Nested  
-        
+        # API did not include, information manually required
          ut = 'Orthodoxy'
-        # --------
+        
         tm_bonus = returned_results[30]["team_bonus"]
         civ_bonus = returned_results[30]["civilization_bonus"] 
-        #---------------table
+       
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
@@ -691,22 +685,15 @@ def process_civ_landing(user_choice)
     when 32
         name = returned_results[31]["name"]
         army = returned_results[31]["army_type"]
-        #------------------------------------------------------------ API ACCESS Nested 
-        
+        # API did not include, information manually required
          uu = 'Rattan Archer'
-        # #------------------------------------------------------------ API ACCESS Nested  
+         # API did not include, information manually required
          ut = 'Chatras'
-        # --------
         tm_bonus = returned_results[31]["team_bonus"]
         civ_bonus = returned_results[31]["civilization_bonus"] 
-        #---------------table
         table = TTY::Table.new(["Civilisation ","Army Type ", "Unique Unit ", "Unique Technology ", "Team Bonus ", "Civilisation Bonus "], 
        [[name, army,   uu, ut, tm_bonus, civ_bonus[0]]])
         system('clear')
         puts table.render(:ascii)
         end
-
-
-
-
 end 
