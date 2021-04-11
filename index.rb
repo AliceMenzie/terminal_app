@@ -55,3 +55,10 @@ class App
     puts "----------------------------------"
   end
 end
+
+def back_to_main
+  choice = @prompt.select(" ") do |menu|
+    menu.choice "Main", 1
+  end
+  system ('clear')
+end

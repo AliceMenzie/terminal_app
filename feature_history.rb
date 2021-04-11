@@ -1,5 +1,4 @@
 require_relative "index.rb"
-require_relative "feature_random"
 require "tty-prompt"
 require "json"
 
@@ -119,10 +118,3 @@ def update_history(display)
   display.display_input
 end
 
-def back_to_main
-  choice = @prompt.select(" ") do |menu|
-    menu.choice "Main", 1
-    menu.choice "Exit", 4
-  end
-  system("clear")
-end

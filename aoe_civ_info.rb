@@ -1,5 +1,4 @@
 require "httparty"
-# require "tty-table"
 
 class Api_Info
   attr_accessor :civilisations
@@ -7,7 +6,6 @@ class Api_Info
   def initialize
     @civilisations = civilisations
   end
-
 
   def access_u_units
     @civilisations.each do |property_u_unit| puts property_u_unit["unique_unit"] end
@@ -28,9 +26,6 @@ class Api_Info
       puts "ERROR #{e}"
       return
     end
-
     return response.parsed_response["civilizations"]
   end
 end
-
-
