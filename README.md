@@ -2,7 +2,7 @@
 
 # About 
 
-This Application was developed as part of the CoderAcademy Fast track course. 
+This is a terminal application, developed as part of the CoderAcademy Fast track course. 
 
 # How To Download and Run 
 Installation
