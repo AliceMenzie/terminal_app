@@ -1,10 +1,10 @@
-### AoE Performance Tracker 
+# AoE Performance Tracker 
 
-# About 
+## About 
 
 This is a terminal application, developed as part of the CoderAcademy Fast track course. 
 
-# How To Download and Run 
+### How To Download and Run 
 Installation
 1. Download from Github thruogh the download zip option
 2. Require dependencies through installing gems, in your terminal run `gem install  tty-prompt httparty tty-table`
@@ -12,7 +12,7 @@ Installation
 For further assistance on how to use the app you can run `./aoe_pt.sh --help` 
 
 
-# How do I use this Application? 
+### How do I use this Application? 
 
 Once running the application, features will be displayed on the menu, to access each element use the arrow keys to move to the feature you want to access 1. Match History 2. Random Civ generation 3. Civ information 4. Exit, then press enter. Once a category has been selected continue moving through the app with a arrow keys and pressing enter when you wish to move to a different space in the application
 1. Match History
@@ -26,7 +26,7 @@ will display a scroll screen which you can navigate using the arrows press enter
 
 
 
-# Manual Testing
+### Manual Testing
 
 Test 1: Check for correct running of feature: `Civ Info`
 
