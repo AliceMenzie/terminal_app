@@ -2,7 +2,7 @@
 
 ## About 
 
-This is a terminal application, developed as part of the CoderAcademy Fast track course. 
+This is a terminal application, developed as part of the CoderAcademy Fast track course. It uses the Age of Empires API, allowing users to access information on each civilisation, keep track of the game history and sets a random challenge for them to complete. 
 
 ### How To Download and Run 
 Installation
